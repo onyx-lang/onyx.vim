@@ -27,7 +27,7 @@ end)
 You need to tell Vim/NeoVim to use the `onyx` syntax for `.onyx` files.
 This can be done in the following way.
 
-*Vim* - `.vimrc'
+*Vim* - `.vimrc`
 
 ```vim
 augroup onyx_ft
