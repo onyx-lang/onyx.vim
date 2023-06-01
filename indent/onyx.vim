@@ -3,7 +3,6 @@ if exists("b:did_onyx_indent")
 endif
 let b:did_onyx_indent = 1
 
-# Disable all the other crap
 setlocal nosmartindent
 setlocal nolisp
 setlocal autoindent
@@ -26,7 +25,7 @@ function! OnyxIndent(lnum)
 
   let ind = indent(prev)
 
-  if prevline =~ '[({,]\s*$'
+  if prevline =~ '[({]\s*$'
     let ind += &sw
   endif
 
