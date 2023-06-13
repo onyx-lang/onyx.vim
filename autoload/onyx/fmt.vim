@@ -13,8 +13,8 @@ function! onyx#fmt#Format() abort
     return
   endif
 
-  let cmdline = 'onyx check ' . expand('%')
-  # let current_buf = bufnr('')
+  let cmdline = 'onyx check --no-colors --no-stale-code ' . expand('%')
+  " let current_buf = bufnr('')
 
   " The formatted code is output on stdout, the errors go on stderr.
   if exists('*systemlist')
