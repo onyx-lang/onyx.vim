@@ -4,7 +4,7 @@
 " Use of this source code is governed by a BSD-style
 " license that can be found in the LICENSE file.
 
-function! onyx#fmt#Format() abort
+function! onyx#check#Check() abort
   " Save cursor position and many other things.
   let view = winsaveview()
 
@@ -14,7 +14,6 @@ function! onyx#fmt#Format() abort
   endif
 
   let cmdline = 'onyx check --no-colors --no-stale-code ' . expand('%:p')
-  " let current_buf = bufnr('')
 
   " The formatted code is output on stdout, the errors go on stderr.
   if exists('*systemlist')
@@ -29,19 +28,11 @@ function! onyx#fmt#Format() abort
     " remove undo point caused via BufWritePre.
     try | silent undojoin | catch | endtry
 
-    " Replace the file content with the formatted version.
-    " if exists('*deletebufline')
-    "   call deletebufline(current_buf, len(out), line('$'))
-    " else
-    "   silent execute ':' . len(out) . ',' . line('$') . ' delete _'
-    " endif
-    " call setline(1, out)
-
     " No errors detected, close the loclist.
     call setloclist(0, [], 'r')
     lclose
   elseif get(g:, 'onyx_check_parse_errors', 1)
-    let errors = s:parse_errors(expand('%'), out)
+    let errors = s:parse_errors(expand('%:p'), out)
 
     call setloclist(0, [], 'r', {
         \ 'title': 'Errors',
@@ -57,11 +48,6 @@ function! onyx#fmt#Format() abort
 
   call winrestview(view)
 
-  " if err != 0
-  "   echohl Error | echomsg "onyx check returned error" | echohl None
-  "   return
-  " endif
-
   " Run the syntax highlighter on the updated content and recompute the folds if
   " needed.
   syntax sync fromstart
@@ -75,7 +61,7 @@ function! s:parse_errors(filename, lines) abort
     let tokens = matchlist(line, '^(\(.*\):\(\d\+\),\(\d\+\))\s*\(.*\)')
     if !empty(tokens)
       call add(errors,{
-            \"filename": a:filename,
+            \"filename": tokens[1],
             \"lnum":     tokens[2],
             \"col":      tokens[3],
             \"text":     tokens[4],
