@@ -31,6 +31,10 @@ endif
 let b:undo_ftplugin =
     \ 'setl isk< et< ts< sts< sw< fo< sua< mp< com< cms< inex< inc< pa<'
 
+augroup vim-onyx
+    autocmd BufWritePost <buffer> if get(g:, 'onyx_check_autosave', 1) | call onyx#fmt#Format() | endif
+augroup END
+
 let &cpo = s:cpo_orig
 unlet s:cpo_orig
 
