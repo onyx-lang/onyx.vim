@@ -4,7 +4,7 @@
 " Use of this source code is governed by a BSD-style
 " license that can be found in the LICENSE file.
 
-function! onyx#check#Check() abort
+function! onyx#fmt#Check() abort
   " Save cursor position and many other things.
   let view = winsaveview()
 

@@ -33,7 +33,7 @@ let b:undo_ftplugin =
 
 augroup vim-onyx
     autocmd! * <buffer>
-    autocmd BufWritePost <buffer> if get(g:, 'onyx_check_autosave', 1) | call onyx#check#Check() | endif
+    autocmd BufWritePost <buffer> if get(g:, 'onyx_check_autosave', 1) | call onyx#fmt#Check() | endif
 augroup END
 
 let &cpo = s:cpo_orig
