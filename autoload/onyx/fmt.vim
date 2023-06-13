@@ -13,7 +13,7 @@ function! onyx#fmt#Format() abort
     return
   endif
 
-  let cmdline = 'onyx check --no-colors --no-stale-code ' . expand('%')
+  let cmdline = 'onyx check --no-colors --no-stale-code ' . expand('%:p')
   " let current_buf = bufnr('')
 
   " The formatted code is output on stdout, the errors go on stderr.
@@ -57,10 +57,10 @@ function! onyx#fmt#Format() abort
 
   call winrestview(view)
 
-  if err != 0
-    echohl Error | echomsg "onyx check returned error" | echohl None
-    return
-  endif
+  " if err != 0
+  "   echohl Error | echomsg "onyx check returned error" | echohl None
+  "   return
+  " endif
 
   " Run the syntax highlighter on the updated content and recompute the folds if
   " needed.
