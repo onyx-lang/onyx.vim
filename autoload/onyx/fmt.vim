@@ -30,7 +30,7 @@ function! onyx#fmt#Check() abort
 
     " No errors detected, close the loclist.
     call setqflist([], 'r')
-    lclose
+    cclose
   elseif get(g:, 'onyx_check_parse_errors', 1)
     let errors = s:parse_errors(expand('%:p'), out)
 
@@ -43,7 +43,7 @@ function! onyx#fmt#Check() abort
     " Prevent the loclist from becoming too long.
     let win_height = min([max_win_height, len(errors)])
     " Open the loclist, but only if there's at least one error to show.
-    execute 'silent! lwindow ' . win_height
+    execute 'silent! cwindow ' . win_height
   endif
 
   call winrestview(view)
