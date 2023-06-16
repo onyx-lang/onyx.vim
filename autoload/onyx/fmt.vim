@@ -29,13 +29,13 @@ function! onyx#fmt#Check() abort
     try | silent undojoin | catch | endtry
 
     " No errors detected, close the loclist.
-    call setloclist(0, [], 'r')
+    call setqflist([], 'r')
     lclose
   elseif get(g:, 'onyx_check_parse_errors', 1)
     let errors = s:parse_errors(expand('%:p'), out)
 
-    call setloclist(0, [], 'r', {
-        \ 'title': 'Errors',
+    call setqflist([], 'r', {
+        \ 'title': 'Onyx Errors',
         \ 'items': errors,
         \ })
 
