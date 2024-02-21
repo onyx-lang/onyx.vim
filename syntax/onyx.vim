@@ -12,7 +12,7 @@ set cpo&vim
 
 syn keyword onyxKeyword package struct union enum use global macro
 syn keyword onyxKeyword if elseif else where interface
-syn keyword onyxKeyword for while do
+syn keyword onyxKeyword for while do as in
 syn keyword onyxKeyword switch case
 syn keyword onyxKeyword break continue return defer fallthrough
 syn keyword onyxKeyword cast sizeof alignof typeof

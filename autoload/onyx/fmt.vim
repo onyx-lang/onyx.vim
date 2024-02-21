@@ -15,7 +15,6 @@ function! onyx#fmt#Check() abort
 
   let cmdline = 'onyx check -Dno_entrypoint --no-colors --no-stale-code ' . expand('%:p')
 
-  " The formatted code is output on stdout, the errors go on stderr.
   if exists('*systemlist')
     silent let out = systemlist(cmdline)
   else
