@@ -30,9 +30,9 @@ syn keyword onyxType type_expr any
 syn keyword onyxConstant        true false null null_proc it
 
 syn match onyxNumber            "\<0x[a-fA-F0-9_]\+\>"
-syn match onyxNumber            "\<\d[\d_]*[lf]\=\>"
-syn match onyxNumber            "\<\d[\d_]*\.\d\=[\d_]*f\=\>"
-syn match onyxNumber            "\.\d\+f\=\>"
+syn match onyxNumber            "\<\d[0-9_]*[lf]\=\>"
+syn match onyxNumber            "\<\d[0-9_]*\.\d\=[0-9_]*f\=\>"
+syn match onyxNumber            "\.\d[0-9_]*f\=\>"
 
 syn keyword onyxCommentStart    contained TODO NOTE BUG HACK
 
